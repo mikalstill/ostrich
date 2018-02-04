@@ -37,6 +37,7 @@ def get_steps(r):
         'os-ceilometer-install',
         'os-aodh-install',
         'os-swift-install',
+        'os-tempest-install'
     ]
 
     if utils.is_ironic(r):

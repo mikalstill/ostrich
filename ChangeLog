@@ -1,11 +1,49 @@
 CHANGES
 =======
 
+* Install tempest
+* Remove code which has been moved to stages
+* Fix missing argument
+* Fix missing argument
+* Only load things which are stages
+* De-dup repeated proxy setup
+* Bump mitaka sha to EOL
+* Actually make tracing work
+* Make process tracing optional
+* Make wget quiet
+* setup-ephyra now takes a release name
+* The VIP uses SSL, so these URLs must too
+* Integration work required to get newton working with Ironic
+* Bump shas
+* We can only enable the ceph scenario when it exists
+* Separate out ironic debugging output
+* Make 1 an ok patch exit code (it implies unprocessed text in the patch file)
+* I accidentally dropped the ceph patch
+* I am an idiot. -v isn't verbose
+* Move ceph patching later
+* Add missing patch file
+* Ceph needs a global pg_num value set
+* Fix patch path detection
+* Let's try that again
+* Ceph is handled as a scenario
+* Apparently env vars can't be ints
+* Fix typo
+* Make ansible debug mode optional
+* Its a list of dicts!
+* Actually add the steps!
+* Fix step name
+* os-cmd bugfix (appears in trunk OSA already)
+* Bump shas some more
+* Bump shas
+* First attempt at enabling ceph
+* os-cmd bugfix (appears in trunk OSA already)
+* Bump shas some more
 * Make the acceptable exit codes from a CommandStep configurable
 * Make patching verbose
 * Move the cinder patch later
 * Get the cinder patch logic right
 * Add upper constraints to all cinder installs
+* Bump shas
 * Tweak patch for ocata
 * Handle missing dictionary key
 * Unset proxies, instead of using empty strings

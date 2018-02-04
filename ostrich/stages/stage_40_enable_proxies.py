@@ -10,6 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from ostrich.stages import repeated
 from ostrich import steps
 
 
@@ -46,38 +47,6 @@ def get_steps(r):
                     **r.kwargs)
                 )
 
-    replacements = [
-        ('(http|https|git)://github.com',
-         r.complete['git-mirror-github']),
-        ('(http|https|git)://git.openstack.org',
-         r.complete['git-mirror-openstack']),
-        ]
-
-    if r.complete['local-cache'] != 'none':
-        replacements.append(
-            ('https://rpc-repo.rackspace.com',
-             'http://%s/rpc-repo.rackspace.com' % r.complete['local-cache'])
-            )
-
-    nextsteps.append(
-        steps.BulkRegexpEditorStep(
-            'bulk-edit-osa',
-            '/opt/openstack-ansible',
-            '.*\.(ini|yml|sh)$',
-            replacements,
-            **r.kwargs)
-        )
-
-    nextsteps.append(
-        steps.BulkRegexpEditorStep(
-            'unapply-git-mirrors-for-cgit',
-            '/opt/openstack-ansible',
-            '.*\.(ini|yml|sh)$',
-            [
-                ('%s/cgit' % r.complete['git-mirror-openstack'],
-                 'https://git.openstack.org/cgit')
-            ],
-            **r.kwargs)
-        )
+    nextsteps.extend(repeated.configure_proxies(r, 'pass-1'))
 
     return nextsteps

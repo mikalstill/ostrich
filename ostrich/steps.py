@@ -295,7 +295,7 @@ class BulkRegexpEditorStep(Step):
                     if result != 'Changed 0 lines':
                         changes += 1
 
-        return changes
+        return 'Changed %d files' % changes
 
 
 class FileAppendStep(Step):
